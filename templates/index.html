@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Competitor Analysis Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function showLoading() {
+            document.getElementById("loading-message").style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <h1>Competitor Analysis Tool</h1>
+
+    {% if error %}
+        <div class="error-message">{{ error }}</div>
+    {% endif %}
+
+    <form method="post" action="/" onsubmit="showLoading()">
+        <label for="target_company">Target Company Name:</label>
+        <input type="text" id="target_company" name="target_company" value="AppWork">
+
+        <label for="target_url">Target Company URL:</label>
+        <input type="text" id="target_url" name="target_url" value="https://appworkco.com/">
+
+        <input type="submit" value="Generate Competitive Landscape">
+    </form>
+
+    <p id="loading-message">Analyzing competitors... This will take 5-10 minutes.</p>
+</body>
+</html>
+

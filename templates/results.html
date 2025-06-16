@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Competitor Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Results for {{ TARGET_COMPANY }}</h1>
+    <p>Source URL: <a href="{{ TARGET_URL }}">{{ TARGET_URL }}</a></p>
+    <p>See results <a href="https://app.clay.com/workspaces/295058/workbooks/wb_0sxr2tud3HWEAFRxNTK/tables/t_0sxr2uezqGm5fuegc5K/views/gv_0sxr6p5TzT8K4EcByK9">here</a></p>
+
+    <div class="results-container">
+        <h2>Competitor List ({{ companies|length }} found)</h2>
+        <ul>
+            {% for company in companies %}
+                <li>{{ company }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <br><a href="{{ url_for('index') }}">Run another</a>
+</body>
+</html>
+
