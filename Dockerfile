@@ -14,5 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8080
 
 # Run app with gunicorn on port 8080 (Fly expects this)
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app", "--timeout", "600"]
-
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8080", "--workers", "5", "--worker-class", "gevent", "--timeout", "2400"]
