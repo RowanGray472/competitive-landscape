@@ -1,3 +1,4 @@
 .env
 venv/
 fly.toml
+*.swp

@@ -29,7 +29,7 @@ def index():
             try:
                 CATEGORIES = json.loads(CATEGORIES)
             except json.JSONDecodeError:
-                return render_template("index.html", error="Categories field looks like a list but is not valid JSON.")
+                return render_template("index.html", error="Incorrectly formatted categories, please reformat.")
 
         # Validate it's now a list or empty
         if not isinstance(CATEGORIES, list) and CATEGORIES != "":
