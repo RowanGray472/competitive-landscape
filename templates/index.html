@@ -12,6 +12,9 @@
 </head>
 <body>
     <h1>Competitor Analysis Tool</h1>
+    <div style="text-align: right; margin-bottom: 20px;">
+        Welcome, {{ session.username }}! | <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
 
     {% if error %}
         <div class="error-message">{{ error }}</div>

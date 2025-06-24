@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, session, flash
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
@@ -12,12 +12,38 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 ORG_ID = os.getenv("ORG_ID")
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 client = OpenAI(api_key=OPENAI_API_KEY, organization=ORG_ID)
+VALID_USERS = json.loads(os.getenv("VALID_USERS"))
 
 
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        
+        if username in VALID_USERS and VALID_USERS[username] == password:
+            session["logged_in"] = True
+            session["username"] = username
+            return redirect(url_for("index"))
+        else:
+            flash("Invalid username or password")
+    
+    return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("login"))
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    if not session.get("logged_in"):
+        return redirect(url_for("login"))
+    
     if request.method == "POST":
         TARGET_COMPANY = request.form.get("target_company")
         TARGET_URL = request.form.get("target_url")

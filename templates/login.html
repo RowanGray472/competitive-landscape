@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Competitor Analysis Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Login</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="error-message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="post" action="{{ url_for('login') }}">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Login">
+    </form>
+
+    <br>
+    <img src="{{ url_for('static', filename='Resolve_Branding_Final_Logos_25_1778a3c00d.png') }}"
+         alt="Resolve Logo"
+         style="max-width: 200px; margin-bottom: 1rem; border-radius: 12px;">
+</body>
+</html>
