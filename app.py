@@ -107,7 +107,7 @@ Do not include any text in the list besides the names of the companies.
 
 **EXCEPTIONS**
 
-Do not ever cite or research using IBIS World
+Do not ever cite or research using IBIS World.
 
 **INPUT**
 
