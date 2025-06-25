@@ -1,6 +1,6 @@
 # competitive-landscape 
 
-![https://github.com/RowanGray472/competitive-landscape/actions?query=workflow%3Atests](https://github.com/RowanGray472/competitive-landscape/workflows/tests/badge.svg)
+![Fly Deploy](https://github.com/RowanGray472/competitive-landscape/workflows/Fly%20Deploy/badge.svg)
 
 This repo contains a website that generates a competitive landscape, given an input of the company name and URL.
 
